@@ -32,3 +32,8 @@ Copy the following code to your onError method of your Application.cfc just befo
 Perform an updateapp on your FarCry site, then log into the webtop and go to Admin --> Edit Config and edit the "Hoth: ColdFusion Exception Tracking" configuration.
 
 Perform another updateapp and you will be done.
+
+LICENSE:
+
+This work is licensed under a Creative Commons Attribution-Share-Alike 3.0
+Unported License.
