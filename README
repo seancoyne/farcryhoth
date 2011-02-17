@@ -1,0 +1,34 @@
+FarCry plugin for the Hoth Exception Reporting framework.
+Hoth was created by Aaron Greenlee
+http://aarongreenlee.com/share/hoth-coldfusion-errors-tracking-reporting
+
+FarCry plugin created by Sean Coyne (sean@n42designs.com)
+
+REQUIREMENTS:
+
+Requires ColdFusion 9 or Railo 3.2 (Hoth uses cfscript CFCs and other CF9 functionality, not sure about the Railo requirement, but this has been tested on Railo 3.2 and ColdFusion 9.0.1)
+FarCry 5.2 or higher (This has been tested on FarCry 6.0.9, however no FC 6-specific functionality was used so it should run on 5.2 just fine.)
+
+NOTES:
+
+This was created using the initial release of Hoth.  Aaron plans to make some updates to the reporting features which may break
+the functionality here so use caution if you manually upgrade the copy of Hoth included with the plugin.
+
+INSTALLATION:
+
+To install, add "farcryhoth" to the list of plugins in your farcry constructor and copy the "farcryhoth" folder to your /farcry/plugins directory
+
+Create a webserver mapping so that /farcryhoth maps to the www folder in the plugin
+	ex: Alias /farcryhoth "/Users/username/Sites/farcry/plugins/farcryhoth/www"
+
+Copy the following code to your farcryConstructor.cfm anywhere after <cfset this.mappings = structnew() /> (note the capital "H" in Hoth for case-sensitive file systems):
+	<cfset this.mappings["/Hoth"] = expandPath("/farcry/plugins/farcryhoth/packages/custom/hoth") />
+
+Copy the following code to your onError method of your Application.cfc just before the cfreturn (you may need to change the name of your exception argument):	
+	<cfif structKeyExists(application,"hoth")>
+		<cfset application.hoth.hoth.track(arguments.exception) />
+	</cfif>
+
+Perform an updateapp on your FarCry site, then log into the webtop and go to Admin --> Edit Config and edit the "Hoth: ColdFusion Exception Tracking" configuration.
+
+Perform another updateapp and you will be done.
