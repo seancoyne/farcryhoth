@@ -6,16 +6,14 @@ FarCry plugin created by Sean Coyne (sean@n42designs.com)
 
 REQUIREMENTS:
 
-Requires ColdFusion 9 or Railo 3.2 (Hoth uses cfscript CFCs and other CF9 functionality, not sure about the Railo requirement, but this has been tested on Railo 3.2 and ColdFusion 9.0.1)
+ColdFusion 9 or Railo 3.2 (Hoth uses cfscript CFCs and other CF9 functionality, not sure about the Railo requirement, but this has been tested on Railo 3.2 and ColdFusion 9.0.1)
 FarCry 5.2 or higher (This has been tested on FarCry 6.0.9, however no FC 6-specific functionality was used so it should run on 5.2 just fine.)
 
 UPDATES:
 
-03/11/2011: Updated Hoth to latest version from GitHub.  Plugin now uses Hoth's built in reporting UI rather than a custom version.  This should allow for less maintenance as Hoth is
-			updated going forward.
+03/11/2011: Updated Hoth to latest version from GitHub.  Plugin now uses Hoth's built in reporting UI rather than a custom version.  This should allow for less maintenance as Hoth is updated going forward.
 
-02/17/2011: Initial version.  This was created using the initial release of Hoth.  Aaron plans to make some updates to the reporting features which may break the functionality here so 
-			use caution if you manually upgrade the copy of Hoth included with the plugin.
+02/17/2011: Initial version.  This was created using the initial release of Hoth.  Aaron plans to make some updates to the reporting features which may break the functionality here so use caution if you manually upgrade the copy of Hoth included with the plugin.
 
 INSTALLATION:
 
@@ -38,5 +36,4 @@ Perform another updateapp and you will be done.
 
 LICENSE:
 
-This work is licensed under a Creative Commons Attribution-Share-Alike 3.0
-Unported License.
+This work is licensed under a Creative Commons Attribution-Share-Alike 3.0 Unported License (http://creativecommons.org/licenses/by-sa/3.0/)
