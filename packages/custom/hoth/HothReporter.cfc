@@ -17,6 +17,7 @@
 component
 name='HothReporter'
 accessors=false
+output="false"
 {
 	public Hoth.HothReporter function init (HothConfig)
 	{
@@ -24,7 +25,7 @@ accessors=false
 		// will use our default.
 		variables.Config = (structKeyExists(arguments, 'HothConfig'))
 			? arguments.HothConfig
-			: new Hoth.object.HothConfig();
+			: new Hoth.config.HothConfig();
 
 		VARIABLES._NAME = 'Hoth_' & variables.Config.getApplicationName();
 
@@ -44,7 +45,6 @@ accessors=false
 	**/
 	public struct function report (required string exception)
 	{
-
 		if (arguments.exception=='all')
 		{
 			return generateExceptionIndex();
@@ -95,7 +95,12 @@ accessors=false
 	/** Return the report's view **/
 	public string function getReportView () {
 		local.view = fileRead(expandPath('/Hoth') & '/views/report.html');
-		return local.view;
+
+		// Replace the Hoth URL
+		return replaceNoCase(
+			 local.view
+			,'${HOTH_REPORT_URL}'
+			,variables.Config.getHothReportURL());
 	}
 
 	// -------------------------------------------------------------------------
@@ -105,16 +110,16 @@ accessors=false
 		local.incidents = directoryList (variables.paths.Exceptions,false);
 
 		local.report = {};
-		for(local.exception in local.exceptions)
-		{
+		for (i=1;i LTE ArrayLen(local.exceptions);i=i+1) {
+
 			local.instance = {};
 			local.instance.filename =
-			listLast(local.exception,'\/');
+			listLast(local.exceptions[i],'\/');
 
 			if (left(local.instance.filename, 1) != '_')
 			{
 				//local.instance.exceptionDetail =
-				//fileRead (local.exception);
+				//fileRead (local.exceptions[i]);
 
 				if (!fileExists(variables.paths.Incidents & '/' & local.instance.filename))
 				{
@@ -124,7 +129,7 @@ accessors=false
 					fileRead(variables.paths.Incidents & '/' & local.instance.filename);
 				}
 
-				local.instance.incidentCount = listLen(local.instances,chr(10));
+				local.instance.incidentcount = listLen(local.instances,chr(10));
 
 				// Save our report
 				local.report[local.instance.filename] = local.instance;

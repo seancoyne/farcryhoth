@@ -3,7 +3,7 @@
 <cftry>
 	
 	<cfset application.hoth = {
-		config = createObject("component","Hoth.object.HothConfig")
+		config = createObject("component","Hoth.config.HothConfig")
 	} />
 	
 	<cfset application.hoth.config.setApplicationName(application.applicationName) />
@@ -13,10 +13,10 @@
 	<cfset application.hoth.config.setEmailNewExceptionsTo(application.fapi.getConfig(key = "hoth", name = "EmailNewExceptionsTo", default = "")) />
 	<cfset application.hoth.config.setEmailNewExceptionsFrom(application.fapi.getConfig(key = "hoth", name = "EmailNewExceptionsFrom", default = "")) />
 	<cfset application.hoth.config.setEmailNewExceptionsFile(application.fapi.getConfig(key = "hoth", name = "EmailNewExceptionsFile", default = false)) />
+	<cfset application.hoth.config.setHothReportURL("http://#cgi.server_name#:#cgi.server_port#/farcryhoth/facade/reporting.cfc") />
 	
 	<cfset application.hoth.hoth = createObject("component","Hoth.HothTracker").init(HothConfig = application.hoth.config) />
-	<!--- use our copy of HothReporter so we load our report HTML --->
-	<cfset application.hoth.report = createObject("component","farcry.plugins.farcryhoth.packages.custom.HothReporter").init(HothConfig = application.hoth.config) />
+	<cfset application.hoth.report = createObject("component","Hoth.HothReporter").init(HothConfig = application.hoth.config) />
 		
 	<cfcatch>
 	

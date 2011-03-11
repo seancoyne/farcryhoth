@@ -1,4 +1,4 @@
-<cfcomponent output="false" key="hoth" displayname="Hoth: ColdFusion Exception Tracking" extends="farcry.core.packages.forms.forms">
+<cfcomponent output="false" key="hoth" displayname="Hoth: ColdFusion Exception Tracking" hint="Manages configuration for the Hoth exception tracking framework" extends="farcry.core.packages.forms.forms">
 	
 	<cfproperty ftSeq="110" ftFieldset="Hoth Configuration" ftLabel="Time to Lock" name="timeToLock" type="integer" ftType="integer" required="true" ftValidation="required" default="1" ftDefault="1" ftHint="How many seconds should we lock file operations?" />
 	<cfproperty ftSeq="120" ftFieldset="Hoth Configuration" ftLabel="Log Path" name="logPath" type="nstring" ftType="string" required="true" ftValidation="required" default="/Hoth/logs" ftDefault="/Hoth/logs" ftHint="Where would you like Hoth to save exception data? This folder should be empty." />
