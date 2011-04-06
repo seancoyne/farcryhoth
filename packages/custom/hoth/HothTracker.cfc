@@ -87,7 +87,7 @@ accessors=false
 			// Hash a unique key for the content of each property within the exception
 			local.index = {};
 			local.index.stack = ( len(local.e.stack) > 0) ? hash(lcase(local.e.stack),'SHA') : '_no_stack';
-			local.index.key = local.index.stack;
+			local.index.key = lcase(local.index.stack);
 
 			local.saveDetails = false;
 
@@ -184,6 +184,12 @@ accessors=false
 			local.result.tagcontext 	= (structKeyExists(arguments.Exception, 'tagContext')) ? arguments.Exception.tagContext : 'undefined';
 			local.result.validException = true;
 			local.result.format 		= 'Native';
+
+			// ADDED by Benoit Hediard to get real detail and message in FW1
+			if (local.result.message == "Event handler exception." && structKeyExists(arguments.Exception, "Cause")) {
+				local.result.detail 	= (structKeyExists(arguments.Exception.Cause, 'detail')) ? arguments.Exception.Cause.detail : 'undefined';
+				local.result.message 	= (structKeyExists(arguments.Exception.Cause, 'message')) ? arguments.Exception.Cause.message : 'undefined';
+			};
 			return local.result;
 		} else {
 			//detail,type,tagcontext,stacktrace,message
@@ -241,7 +247,7 @@ accessors=false
 			}
 			if (!directoryExists(variables.paths.Incidents)) {
 				directoryCreate(variables.paths.Incidents);
-				fileWrite(variables.paths.Exceptions & '/_readme.txt','Hoth: The files within this directory contain the details about the volume of errors for each unique exception.');
+				fileWrite(variables.paths.Incidents & '/_readme.txt','Hoth: The files within this directory contain the details about the volume of errors for each unique exception.');
 			}
 		}
 

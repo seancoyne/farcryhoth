@@ -9,6 +9,7 @@
 	<cfset application.hoth.config.setApplicationName(application.applicationName) />
 	<cfset application.hoth.config.setTimeToLock(application.fapi.getConfig(key = "hoth", name = "timeToLock", default = 1)) />
 	<cfset application.hoth.config.setLogPath(application.fapi.getConfig(key = "hoth", name = "logPath", default = "/Hoth/logs")) />
+	<cfset application.hoth.config.setLogPathIsRelative(application.fapi.getConfig(key = "hoth", name = "logPathIsRelative", default = true)) />
 	<cfset application.hoth.config.setEmailNewExceptions(application.fapi.getConfig(key = "hoth", name = "EmailNewExceptions", default = false)) />
 	<cfset application.hoth.config.setEmailNewExceptionsTo(application.fapi.getConfig(key = "hoth", name = "EmailNewExceptionsTo", default = "")) />
 	<cfset application.hoth.config.setEmailNewExceptionsFrom(application.fapi.getConfig(key = "hoth", name = "EmailNewExceptionsFrom", default = "")) />

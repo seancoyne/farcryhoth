@@ -28,8 +28,9 @@ output="false"
 			: new Hoth.config.HothConfig();
 
 		VARIABLES._NAME = 'Hoth_' & variables.Config.getApplicationName();
-
+		
 		variables.exceptionKeys 	= ['detail','type','tagcontext','stacktrace','message'];// Required exception keys
+		variables.logPathIsRelative = variables.Config.getLogPathIsRelative();
 		variables.paths.LogPath 	= variables.Config.getLogPathExpanded();				// Get the root location for our logging.
 		variables.paths.Exceptions 	= variables.Config.getPath('exceptions');				// Track the unique exceptions.
 		variables.paths.Incidents 	= variables.Config.getPath('incidents');				// Track the hits per exception.
@@ -65,11 +66,16 @@ output="false"
 	public array function delete (required string exception)
 	{
 
-		if (arguments.exception=='all')
+		local.response = [];
+		if (arguments.exception == 'all')
 		{
-			// hahah - not yet.
-		} else {
-			local.exceptionPath = variables.paths.Exceptions & '/' & arguments.exception;
+			lock name=VARIABLES._NAME timeout=variables.Config.getTimeToLock() type="exclusive" {
+				directoryDelete(variables.paths.Exceptions, true);
+				directoryDelete(variables.paths.Incidents, true);
+				directoryCreate(variables.paths.Exceptions);
+				directoryCreate(variables.paths.Incidents);
+			}
+		} else {			local.exceptionPath = variables.paths.Exceptions & '/' & arguments.exception;
 			local.incidentPath = variables.paths.Incidents & '/' & arguments.exception;
 
 			local.response = [];

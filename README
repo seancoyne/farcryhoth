@@ -11,6 +11,8 @@ FarCry 5.2 or higher (This has been tested on FarCry 6.0.9, however no FC 6-spec
 
 UPDATES:
 
+04/06/2011: Updated Hoth to latest version from GitHub.  Allows configuration of the logFileIsRelative setting.  If set to false, you can specify a path a full path to the log file directory.  Be sure to update your FarCry config!
+
 03/11/2011: Updated Hoth to latest version from GitHub.  Plugin now uses Hoth's built in reporting UI rather than a custom version.  This should allow for less maintenance as Hoth is updated going forward.
 
 02/17/2011: Initial version.  This was created using the initial release of Hoth.  Aaron plans to make some updates to the reporting features which may break the functionality here so use caution if you manually upgrade the copy of Hoth included with the plugin.
