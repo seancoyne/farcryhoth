@@ -11,6 +11,8 @@ FarCry 5.2 or higher (This has been tested on FarCry 6.0.9, however no FC 6-spec
 
 UPDATES:
 
+06/27/2011: Moved Hoth to a git submodule.  To pull down a copy of Hoth when cloning, after the clone is complete run "git submodule init" then "git submodule update".
+
 04/06/2011: Updated Hoth to latest version from GitHub.  Allows configuration of the logFileIsRelative setting.  If set to false, you can specify a path a full path to the log file directory.  Be sure to update your FarCry config!
 
 03/11/2011: Updated Hoth to latest version from GitHub.  Plugin now uses Hoth's built in reporting UI rather than a custom version.  This should allow for less maintenance as Hoth is updated going forward.
@@ -18,6 +20,12 @@ UPDATES:
 02/17/2011: Initial version.  This was created using the initial release of Hoth.  Aaron plans to make some updates to the reporting features which may break the functionality here so use caution if you manually upgrade the copy of Hoth included with the plugin.
 
 INSTALLATION:
+
+Clone from github (this will clone farcryhoth to a directory called "farcryhoth")
+	"git clone git://github.com/seancoyne/farcryhoth.git"
+Pull down the Hoth submodule (these commands will pull down Hoth to the /farcryhoth/packages/custom/hoth directory)
+	"git submodule init"
+	"git submodule update"
 
 To install, add "farcryhoth" to the list of plugins in your farcry constructor and copy the "farcryhoth" folder to your /farcry/plugins directory
 
