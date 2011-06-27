@@ -1,0 +1,3 @@
+[submodule "packages/custom/hoth"]
+	path = packages/custom/hoth
+	url = https://github.com/aarongreenlee/Hoth.git
