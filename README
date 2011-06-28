@@ -23,6 +23,8 @@ INSTALLATION:
 
 Clone from github (this will clone farcryhoth to a directory called "farcryhoth")
 	"git clone git://github.com/seancoyne/farcryhoth.git"
+Change directories to the farcryhoth directory
+	"cd farcryhoth"
 Pull down the Hoth submodule (these commands will pull down Hoth to the /farcryhoth/packages/custom/hoth directory)
 	"git submodule init"
 	"git submodule update"
