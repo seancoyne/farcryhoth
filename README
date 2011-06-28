@@ -27,6 +27,8 @@ Pull down the Hoth submodule (these commands will pull down Hoth to the /farcryh
 	"git submodule init"
 	"git submodule update"
 
+If you downloaded the zip or tarball, you will also need a copy of Hoth which you can find at https://github.com/aarongreenlee/Hoth.  Download Hoth and place those files in the packages/custom/hoth directory.
+
 To install, add "farcryhoth" to the list of plugins in your farcry constructor and copy the "farcryhoth" folder to your /farcry/plugins directory
 
 Create a webserver mapping so that /farcryhoth maps to the www folder in the plugin
