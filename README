@@ -11,6 +11,8 @@ FarCry 5.2 or higher (This has been tested on FarCry 6.0.9, however no FC 6-spec
 
 UPDATES:
 
+08/31/2011: Move config setup to the config's process method. When FarCry core bug https://farcry.jira.com/browse/FC-2538 is fixed, this will remove the need for the second update app when you initially install and configure Hoth.  For now, the only time we can reinitialize Hoth is on app startup and so, the second update app is still required (and will be required whenever you modify the Hoth configuration).
+
 06/27/2011: Moved Hoth to a git submodule.  To pull down a copy of Hoth when cloning, after the clone is complete run "git submodule init" then "git submodule update".
 
 04/06/2011: Updated Hoth to latest version from GitHub.  Allows configuration of the logFileIsRelative setting.  If set to false, you can specify a path a full path to the log file directory.  Be sure to update your FarCry config!
@@ -46,7 +48,7 @@ Copy the following code to your onError method of your Application.cfc just befo
 
 Perform an updateapp on your FarCry site, then log into the webtop and go to Admin --> Edit Config and edit the "Hoth: ColdFusion Exception Tracking" configuration.
 
-Perform another updateapp and you will be done.
+Perform another updateapp and you will be done. Note: This second update app is required due to a bug in FarCry core (https://farcry.jira.com/browse/FC-2538).  It will also require an update app any time you modify the Hoth configuration.
 
 LICENSE:
 
