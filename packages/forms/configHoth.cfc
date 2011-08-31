@@ -8,4 +8,34 @@
 	<cfproperty ftSeq="150" ftFieldset="Hoth Configuration" ftLabel="From Address" name="EmailNewExceptionsFrom" type="nstring" ftType="string" required="false" default="" ftDefault="" ftHint="What address would you like these emails sent from?" />
 	<cfproperty ftSeq="160" ftFieldset="Hoth Configuration" ftLabel="Include JSON in Email?" name="EmailNewExceptionsFile" type="boolean" ftType="boolean" required="true" default="0" ftDefault="0" ftHint="Would you like the raw JSON attached to the e-mail?" />
 	
+	<cffunction name="process" access="public" output="true" returntype="struct" hint="Creates the Hoth objects based on submitted data">
+		<cfargument name="fields" type="struct" required="true" hint="The fields submitted" />
+			
+		<cfparam name="arguments.fields.timeToLock" default="1" />
+		<cfparam name="arguments.fields.logPath" default="/Hoth/logs" />
+		<cfparam name="arguments.fields.logPathIsRelative" default="1" />
+		<cfparam name="arguments.fields.emailNewExceptions" default="0" />
+		<cfparam name="arguments.fields.emailNewExceptionsTo" default="" />
+		<cfparam name="arguments.fields.emailNewExceptionsFrom" default="" />
+		<cfparam name="arguments.fields.emailNewExceptionsFile" default="0" />
+		
+		<cfset application.hoth = { config = createObject("component","Hoth.config.HothConfig") } />
+		
+		<cfset application.hoth.config.setApplicationName(application.applicationName) />
+		<cfset application.hoth.config.setTimeToLock(arguments.fields.timeToLock) />
+		<cfset application.hoth.config.setLogPath(arguments.fields.logPath) />
+		<cfset application.hoth.config.setLogPathIsRelative(arguments.fields.logPathIsRelative) />
+		<cfset application.hoth.config.setEmailNewExceptions(arguments.fields.emailNewExceptions) />
+		<cfset application.hoth.config.setEmailNewExceptionsTo(arguments.fields.emailNewExceptionsTo) />
+		<cfset application.hoth.config.setEmailNewExceptionsFrom(arguments.fields.emailNewExceptionsFrom) />
+		<cfset application.hoth.config.setEmailNewExceptionsFile(arguments.fields.emailNewExceptionsFile) />
+		<cfset application.hoth.config.setHothReportURL("http://#cgi.server_name#:#cgi.server_port#/farcryhoth/facade/reporting.cfc") />
+		
+		<cfset application.hoth.hoth = createObject("component","Hoth.HothTracker").init(HothConfig = application.hoth.config) />
+		<cfset application.hoth.report = createObject("component","Hoth.HothReporter").init(HothConfig = application.hoth.config) />
+			
+		<cfreturn arguments.fields />
+	
+	</cffunction>
+	
 </cfcomponent>
