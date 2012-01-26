@@ -16,6 +16,8 @@ This work is licensed under a Creative Commons Attribution-Share-Alike 3.0 Unpor
 
 ## Changelog
 
+__01/26/2012:__ FarCry core bug [FC-2538](https://farcry.jira.com/browse/FC-2538) is now fixed. If you are running 6.0.18, 6.1.3, or the latest p600, p610 or trunk branches you no longer need to perform an update app after configuring Hoth.
+
 __08/31/2011:__ Move config setup to the config's process method. When FarCry core bug [FC-2538](https://farcry.jira.com/browse/FC-2538) is fixed, this will remove the need for the second update app when you initially install and configure Hoth.  For now, the only time we can reinitialize Hoth is on app startup and so, the second update app is still required (and will be required whenever you modify the Hoth configuration).
 
 __06/27/2011:__ Moved Hoth to a git submodule.  To pull down a copy of Hoth when cloning, after the clone is complete run "git submodule init" then "git submodule update".
@@ -67,4 +69,4 @@ __02/17/2011:__ Initial version.  This was created using the initial release of 
         </cfif>
 
 5. Perform an updateapp on your FarCry site, then log into the webtop and go to Admin --> Edit Config and edit the "Hoth: ColdFusion Exception Tracking" configuration.
-6. Perform another updateapp and you will be done. Note: This second update app is required due to a bug in FarCry core ([FC-2538](https://farcry.jira.com/browse/FC-2538)).  It will also require an update app any time you modify the Hoth configuration.
+6. (< FarCry 6.0.18 or < 6.1.3 only) Perform another updateapp and you will be done. Note: This second update app is required due to a bug in FarCry core ([FC-2538](https://farcry.jira.com/browse/FC-2538)).  It will also require an update app any time you modify the Hoth configuration.
