@@ -16,6 +16,8 @@ This work is licensed under a Creative Commons Attribution-Share-Alike 3.0 Unpor
 
 ## Changelog
 
+__02/13/2013:__ Upgrade Hoth
+
 __01/26/2012:__ FarCry core bug [FC-2538](https://farcry.jira.com/browse/FC-2538) is now fixed. If you are running 6.0.18, 6.1.3, or the latest p600, p610 or trunk branches you no longer need to perform an update app after configuring Hoth.
 
 __08/31/2011:__ Move config setup to the config's process method. When FarCry core bug [FC-2538](https://farcry.jira.com/browse/FC-2538) is fixed, this will remove the need for the second update app when you initially install and configure Hoth.  For now, the only time we can reinitialize Hoth is on app startup and so, the second update app is still required (and will be required whenever you modify the Hoth configuration).
